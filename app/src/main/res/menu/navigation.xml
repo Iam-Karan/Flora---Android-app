@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/bottom_nav_gift"
+        android:icon="@drawable/ic_baseline_card_giftcard_24"
+        android:title="Gift" />
+    <item
+        android:id="@+id/bottom_nav_flower"
+        android:icon="@drawable/ic_baseline_filter_vintage_24"
+        android:title="Flower" />
+    <item
+        android:id="@+id/bottom_nav_favorite"
+        android:icon="@drawable/ic_baseline_favorite_24"
+        android:title="Favorite" />
+</menu>
