@@ -1,6 +1,9 @@
 package com.flora.flora;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+
 import com.google.android.material.navigation.NavigationView;
 
 import androidx.navigation.NavController;
@@ -27,6 +30,14 @@ public class MainActivity extends AppCompatActivity {
 
         DrawerLayout drawer = binding.drawerLayout;
         NavigationView navigationView = binding.navView;
+        navigationView.getHeaderView(0).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getBaseContext(), LoginScreen.class);
+                startActivity(intent);
+            }
+        });
+
         mAppBarConfiguration = new AppBarConfiguration.Builder(
                 R.id.nav_home)
                 .setOpenableLayout(drawer)
