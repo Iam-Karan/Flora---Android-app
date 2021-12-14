@@ -11,4 +11,9 @@
         android:label="@string/menu_home"
         tools:layout="@layout/fragment_home" />
 
+    <activity
+        android:id="@+id/nav_orders"
+        android:name="com.flora.flora.OrdersActivity"
+        android:label="Orders"
+        tools:layout="@layout/activity_orders"/>
 </navigation>

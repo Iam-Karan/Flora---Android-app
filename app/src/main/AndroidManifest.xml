@@ -10,16 +10,20 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Flora">
         <activity
+            android:name=".OrdersActivity"
+            android:exported="false"
+            android:theme="@style/Theme.Flora.NoActionBar"/>
+        <activity
             android:name=".ProductDetailScreen"
             android:exported="false" />
         <activity
             android:name=".SignupScreen"
             android:exported="false"
-            android:theme="@style/Theme.Flora.NoActionBar"/>
+            android:theme="@style/Theme.Flora.NoActionBar" />
         <activity
             android:name=".LoginScreen"
             android:exported="false"
-            android:theme="@style/Theme.Flora.NoActionBar"/>
+            android:theme="@style/Theme.Flora.NoActionBar" />
         <activity
             android:name=".SplashScreen"
             android:exported="true"
