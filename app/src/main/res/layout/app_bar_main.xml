@@ -37,6 +37,7 @@
                     android:textSize="24dp"
                     android:textColor="@color/red" />
                 <ImageView
+                    android:id="@+id/cart"
                     android:layout_width="25dp"
                     android:layout_height="25dp"
                     android:layout_marginRight="10dp"
