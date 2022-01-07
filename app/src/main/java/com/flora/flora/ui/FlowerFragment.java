@@ -1,7 +1,9 @@
 package com.flora.flora.ui;
 
+import android.content.Intent;
 import android.os.Bundle;
 
+import androidx.appcompat.widget.AppCompatButton;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.GridLayoutManager;
@@ -11,6 +13,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.flora.flora.CustomizeBoquetActivity;
 import com.flora.flora.HomePageCardRecyclerAdapter;
 import com.flora.flora.ProductItemData;
 import com.flora.flora.R;
@@ -27,6 +30,7 @@ public class FlowerFragment extends Fragment {
 
     private ArrayList<ProductItemData> productItemData = new ArrayList<>();
     private RecyclerView flowerPageRecyclerView;
+    private AppCompatButton costomizeBoquetButton;
 
     public FlowerFragment() {
         // Required empty public constructor
@@ -56,9 +60,17 @@ public class FlowerFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_flower, container, false);
 
         flowerPageRecyclerView = view.findViewById(R.id.flower_recyclerView);
-
+        costomizeBoquetButton = view.findViewById(R.id.customize_boquet_btn);
         setProductsInfo();
         setAdapter();
+
+        costomizeBoquetButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getContext(), CustomizeBoquetActivity.class);
+                startActivity(intent);
+            }
+        });
 
         return view;
     }

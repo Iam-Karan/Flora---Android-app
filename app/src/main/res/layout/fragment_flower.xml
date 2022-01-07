@@ -38,6 +38,20 @@
                 android:background="@drawable/rouned_bg"/>
         </LinearLayout>
 
+        <androidx.appcompat.widget.AppCompatButton
+            android:layout_width="match_parent"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:paddingLeft="20dp"
+            android:id="@+id/customize_boquet_btn"
+            android:layout_height="50dp"
+            android:drawableLeft="@drawable/ic_baseline_edit_24"
+            android:drawableTint="@color/white"
+            android:text="Costimize your Boquet"
+            android:textSize="20dp"
+            android:background="@drawable/red_round_bg"
+            android:textColor="@color/white" />
         <GridLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
