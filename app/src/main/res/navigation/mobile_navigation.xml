@@ -16,4 +16,10 @@
         android:name="com.flora.flora.OrdersActivity"
         android:label="Orders"
         tools:layout="@layout/activity_orders"/>
+
+    <activity
+        android:id="@+id/nav_customize_boquet"
+        android:name="com.flora.flora.CustomizeBoquetActivity"
+        android:label="Orders"
+        tools:layout="@layout/activity_customize_boquet"/>
 </navigation>

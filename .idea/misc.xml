@@ -7,6 +7,7 @@
         <entry key="..\:/Users/patel/AndroidStudioProjects/Flora/app/src/main/res/drawable-v24/ic_baseline_account_circle_24.xml" value="0.1638888888888889" />
         <entry key="..\:/Users/patel/AndroidStudioProjects/Flora/app/src/main/res/drawable-v24/ic_baseline_auto_awesome_mosaic_24.xml" value="0.23055555555555557" />
         <entry key="..\:/Users/patel/AndroidStudioProjects/Flora/app/src/main/res/drawable-v24/ic_baseline_card_giftcard_24.xml" value="0.23055555555555557" />
+        <entry key="..\:/Users/patel/AndroidStudioProjects/Flora/app/src/main/res/drawable-v24/ic_baseline_edit_24.xml" value="0.22777777777777777" />
         <entry key="..\:/Users/patel/AndroidStudioProjects/Flora/app/src/main/res/drawable-v24/ic_baseline_favorite_24.xml" value="0.1638888888888889" />
         <entry key="..\:/Users/patel/AndroidStudioProjects/Flora/app/src/main/res/drawable-v24/ic_baseline_search_24.xml" value="0.25092592592592594" />
         <entry key="..\:/Users/patel/AndroidStudioProjects/Flora/app/src/main/res/drawable-v24/ic_baseline_shopping_cart_24.xml" value="0.1638888888888889" />
@@ -24,6 +25,7 @@
         <entry key="..\:/Users/patel/AndroidStudioProjects/Flora/app/src/main/res/drawable/round_card_bg.xml" value="0.2361111111111111" />
         <entry key="..\:/Users/patel/AndroidStudioProjects/Flora/app/src/main/res/drawable/side_nav_bar.xml" value="0.2361111111111111" />
         <entry key="..\:/Users/patel/AndroidStudioProjects/Flora/app/src/main/res/layout/activity_cart_screen.xml" value="0.25" />
+        <entry key="..\:/Users/patel/AndroidStudioProjects/Flora/app/src/main/res/layout/activity_customize_boquet.xml" value="0.18518518518518517" />
         <entry key="..\:/Users/patel/AndroidStudioProjects/Flora/app/src/main/res/layout/activity_login_screen.xml" value="0.25" />
         <entry key="..\:/Users/patel/AndroidStudioProjects/Flora/app/src/main/res/layout/activity_main.xml" value="0.264" />
         <entry key="..\:/Users/patel/AndroidStudioProjects/Flora/app/src/main/res/layout/activity_orders.xml" value="0.25" />
