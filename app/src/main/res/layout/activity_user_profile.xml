@@ -1,0 +1,256 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/red"
+    tools:context=".UserProfile">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?attr/colorPrimary"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="0dp"
+        android:elevation="0dp">
+
+        <ImageButton
+            android:id="@+id/back_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_baseline_arrow_back_24"
+            android:background="@android:color/transparent"/>
+
+        <TextView
+            android:id="@+id/headerText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="20dp"
+            android:text="User Profile"
+            android:textSize="24dp"
+            android:textColor="@color/red" />
+
+    </androidx.appcompat.widget.Toolbar>
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <GridLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:rowCount="2"
+            android:columnCount="1">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:background="@color/white">
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:layout_marginTop="20dp"
+                    android:layout_marginBottom="20dp"
+                    android:layout_width="200dp"
+                    android:layout_height="200dp"
+                    app:shapeAppearanceOverlay="@style/roundedImageViewRounded"
+                    app:strokeColor="@color/red"
+                    android:background="@color/red"
+                    app:strokeWidth="1dp" />
+            </LinearLayout>
+
+            <GridLayout
+                android:id="@+id/user_profile"
+                android:layout_rowWeight="2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:columnCount="2"
+                android:rowCount="5"
+                android:useDefaultMargins="true"
+                android:padding="20dp"
+                android:background="@color/red">
+
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_columnWeight="1"
+                    app:tint="@color/white"
+                    android:src="@drawable/ic_baseline_account_box_24" />
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_columnWeight="2"
+                    android:layout_marginLeft="20dp"
+                    android:text="User Name"
+                    android:textSize="20dp"
+                    android:textColor="@color/white" />
+
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_columnWeight="1"
+                    app:tint="@color/white"
+                    android:src="@drawable/ic_baseline_email_24" />
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_columnWeight="2"
+                    android:layout_marginLeft="20dp"
+                    android:text="Email id"
+                    android:textSize="20dp"
+                    android:textColor="@color/white" />
+
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_columnWeight="1"
+                    app:tint="@color/white"
+                    android:src="@drawable/ic_baseline_smartphone_24" />
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_columnWeight="2"
+                    android:layout_marginLeft="20dp"
+                    android:text="+1 000 000 0000"
+                    android:textSize="20dp"
+                    android:textColor="@color/white" />
+
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_columnWeight="1"
+                    app:tint="@color/white"
+                    android:src="@drawable/ic_baseline_password_24" />
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_columnWeight="2"
+                    android:layout_marginLeft="20dp"
+                    android:text="********"
+                    android:inputType="textPassword"
+                    android:textSize="20dp"
+                    android:textColor="@color/white" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/edit_profile_btn"
+                    android:layout_width="200dp"
+                    android:layout_height="wrap_content"
+                    android:layout_columnSpan="2"
+                    android:layout_gravity="center_horizontal"
+                    app:strokeWidth="2dp"
+                    android:backgroundTint="@color/red"
+                    app:strokeColor="@color/white"
+                    android:text="Edit profile"
+                    android:textColor="@color/white"/>
+
+            </GridLayout>
+            <GridLayout
+                android:id="@+id/edit_profile"
+                android:visibility="gone"
+                android:layout_rowWeight="2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:columnCount="2"
+                android:rowCount="6"
+                android:useDefaultMargins="true"
+                android:padding="20dp"
+                android:background="@color/red">
+
+                <ImageView
+                    android:layout_marginTop="20dp"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_columnWeight="1"
+                    app:tint="@color/white"
+
+                    android:src="@drawable/ic_baseline_account_box_24" />
+                <EditText
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_columnWeight="2"
+                    android:hint="User Name"
+                    android:textColorHint="@color/inputtextcolor"
+                    android:layout_gravity="center_vertical"/>
+
+                <ImageView
+                    android:layout_marginTop="20dp"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_columnWeight="1"
+                    app:tint="@color/white"
+                    android:src="@drawable/ic_baseline_email_24" />
+                <EditText
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_columnWeight="2"
+                    android:hint="Email id"
+                    android:inputType="textEmailAddress"
+                    android:textColorHint="@color/inputtextcolor"
+                    android:layout_gravity="center_vertical"/>
+
+                <ImageView
+                    android:layout_marginTop="20dp"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_columnWeight="1"
+                    app:tint="@color/white"
+                    android:src="@drawable/ic_baseline_smartphone_24" />
+                <EditText
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_columnWeight="2"
+                    android:hint="Mobile numeber"
+                    android:textColorHint="@color/inputtextcolor"
+                    android:layout_gravity="center_vertical"/>
+
+                <ImageView
+                    android:layout_marginTop="20dp"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_columnWeight="1"
+                    app:tint="@color/white"
+                    android:src="@drawable/ic_baseline_password_24" />
+                <EditText
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_columnWeight="2"
+                    android:hint="Password"
+                    android:inputType="textPassword"
+                    android:textColorHint="@color/inputtextcolor"
+                    android:layout_gravity="center_vertical"/>
+
+                <ImageView
+                    android:layout_marginTop="20dp"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_columnWeight="1"
+                    app:tint="@color/white"
+                    android:src="@drawable/ic_baseline_password_24" />
+                <EditText
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_columnWeight="2"
+                    android:inputType="textPassword"
+                    android:hint="Confirm Password"
+                    android:textColorHint="@color/inputtextcolor"
+                    android:layout_gravity="center_vertical"/>
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/save_profile_btn"
+                    android:layout_width="200dp"
+                    android:layout_height="wrap_content"
+                    android:layout_columnSpan="2"
+                    android:layout_gravity="center_horizontal"
+                    app:strokeWidth="2dp"
+                    android:backgroundTint="@color/red"
+                    app:strokeColor="@color/white"
+                    android:text="Save Changes"
+                    android:textColor="@color/white"/>
+
+            </GridLayout>
+
+        </GridLayout>
+    </ScrollView>
+</LinearLayout>

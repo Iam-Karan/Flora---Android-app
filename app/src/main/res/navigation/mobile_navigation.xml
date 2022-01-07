@@ -12,6 +12,12 @@
         tools:layout="@layout/fragment_home" />
 
     <activity
+        android:id="@+id/nav_user_profile"
+        android:name="com.flora.flora.UserProfile"
+        android:label="User Profile"
+        tools:layout="@layout/activity_user_profile"/>
+
+    <activity
         android:id="@+id/nav_orders"
         android:name="com.flora.flora.OrdersActivity"
         android:label="Orders"
