@@ -10,6 +10,7 @@
         <entry key="..\:/Users/patel/AndroidStudioProjects/Flora/app/src/main/res/drawable-v24/ic_baseline_card_giftcard_24.xml" value="0.23055555555555557" />
         <entry key="..\:/Users/patel/AndroidStudioProjects/Flora/app/src/main/res/drawable-v24/ic_baseline_edit_24.xml" value="0.22777777777777777" />
         <entry key="..\:/Users/patel/AndroidStudioProjects/Flora/app/src/main/res/drawable-v24/ic_baseline_favorite_24.xml" value="0.1638888888888889" />
+        <entry key="..\:/Users/patel/AndroidStudioProjects/Flora/app/src/main/res/drawable-v24/ic_baseline_restore_24.xml" value="0.22777777777777777" />
         <entry key="..\:/Users/patel/AndroidStudioProjects/Flora/app/src/main/res/drawable-v24/ic_baseline_search_24.xml" value="0.25092592592592594" />
         <entry key="..\:/Users/patel/AndroidStudioProjects/Flora/app/src/main/res/drawable-v24/ic_baseline_shopping_cart_24.xml" value="0.1638888888888889" />
         <entry key="..\:/Users/patel/AndroidStudioProjects/Flora/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.23055555555555557" />
@@ -29,6 +30,7 @@
         <entry key="..\:/Users/patel/AndroidStudioProjects/Flora/app/src/main/res/layout/activity_customize_boquet.xml" value="0.18518518518518517" />
         <entry key="..\:/Users/patel/AndroidStudioProjects/Flora/app/src/main/res/layout/activity_login_screen.xml" value="0.25" />
         <entry key="..\:/Users/patel/AndroidStudioProjects/Flora/app/src/main/res/layout/activity_main.xml" value="0.264" />
+        <entry key="..\:/Users/patel/AndroidStudioProjects/Flora/app/src/main/res/layout/activity_order_track.xml" value="0.25" />
         <entry key="..\:/Users/patel/AndroidStudioProjects/Flora/app/src/main/res/layout/activity_orders.xml" value="0.25" />
         <entry key="..\:/Users/patel/AndroidStudioProjects/Flora/app/src/main/res/layout/activity_product_detail_screen.xml" value="0.25" />
         <entry key="..\:/Users/patel/AndroidStudioProjects/Flora/app/src/main/res/layout/activity_shiping.xml" value="0.25" />

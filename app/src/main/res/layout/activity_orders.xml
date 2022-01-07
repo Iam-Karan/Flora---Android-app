@@ -50,6 +50,7 @@
             android:padding="10dp">
 
             <androidx.cardview.widget.CardView
+                android:id="@+id/order_id"
                 android:layout_margin="10dp"
                 android:layout_width="0dp"
                 android:layout_height="100dp"
