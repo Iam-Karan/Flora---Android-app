@@ -1,6 +1,5 @@
 package com.flora.flora;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatButton;
 import android.annotation.SuppressLint;
@@ -8,12 +7,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.TextView;
 import android.widget.Toast;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.android.gms.tasks.Task;
 import com.google.android.material.textfield.TextInputEditText;
-import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentReference;
@@ -42,9 +36,7 @@ public class SignupScreen extends AppCompatActivity {
         firestore = FirebaseFirestore.getInstance();
         findId();
 
-        signUpBtn.setOnClickListener(view -> {
-            Validate();
-        });
+        signUpBtn.setOnClickListener(view -> Validate());
 
         loginBtn.setOnClickListener(view -> {
             Intent intent = new Intent(getBaseContext(), LoginScreen.class);
@@ -86,7 +78,7 @@ public class SignupScreen extends AppCompatActivity {
                             creatUser(nameText, emailText, phoneText, allergies, passwordText);
                         }
                         else {
-                            setToast(passwordText+" "+confirmPasswordText);
+                            setToast(passwordToast);
                         }
                     }
                     else {
@@ -137,40 +129,24 @@ public class SignupScreen extends AppCompatActivity {
     }
 
     private void creatUser(String name, String email, String phone,String allergies, String password){
-        mAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-            @Override
-            public void onComplete(@NonNull Task<AuthResult> task) {
-                FirebaseUser mFirebaseUser = mAuth.getCurrentUser();
-                if(mFirebaseUser != null) {
-                    uId = mFirebaseUser.getUid();
-                    DocumentReference documentReference = firestore.collection("users").document(uId);
+        mAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(task -> {
+            FirebaseUser mFirebaseUser = mAuth.getCurrentUser();
+            if(mFirebaseUser != null) {
+                uId = mFirebaseUser.getUid();
+                DocumentReference documentReference = firestore.collection("users").document(uId);
 
-                    Map<String, String> user = new HashMap<>();
-                    user.put("name", name);
-                    user.put("email", email);
-                    user.put("phone", phone);
-                    user.put("password", password);
-                    user.put("allergies", allergies);
+                Map<String, String> user = new HashMap<>();
+                user.put("name", name);
+                user.put("email", email);
+                user.put("phone", phone);
+                user.put("password", password);
+                user.put("allergies", allergies);
 
-                    documentReference.set(user).addOnSuccessListener(new OnSuccessListener<Void>() {
-                        @Override
-                        public void onSuccess(Void unused) {
-                            Intent intent = new Intent(getBaseContext(), MainActivity.class);
-                            startActivity(intent);
-                        }
-                    }).addOnFailureListener(new OnFailureListener() {
-                        @Override
-                        public void onFailure(@NonNull Exception e) {
-                            setToast(e.toString());
-                        }
-                    });
-                }
+                documentReference.set(user).addOnSuccessListener(unused -> {
+                    Intent intent = new Intent(getBaseContext(), MainActivity.class);
+                    startActivity(intent);
+                }).addOnFailureListener(e -> setToast(e.toString()));
             }
-        }).addOnFailureListener(new OnFailureListener() {
-            @Override
-            public void onFailure(@NonNull Exception e) {
-                setToast(e.toString());
-            }
-        });
+        }).addOnFailureListener(e -> setToast(e.toString()));
     }
 }
