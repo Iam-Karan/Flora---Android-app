@@ -8,7 +8,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:orientation="vertical"
         android:gravity="center"
         android:padding="20dp">
@@ -18,29 +18,45 @@
             android:layout_height="wrap_content"
             android:text="Login"
             android:textColor="@color/red"
-            android:textSize="36dp"
+            android:textSize="36sp"
             android:textAlignment="center"
-            android:textStyle="bold"/>
+            android:textStyle="bold"
+            tools:ignore="HardcodedText" />
 
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="200dp"
-            android:src="@drawable/flora"/>
+            android:src="@drawable/flora"
+            android:contentDescription="App Logo"
+            tools:ignore="HardcodedText" />
 
+        <TextView
+            android:visibility="gone"
+            android:id="@+id/login_invalid_login"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Invalid email or password"
+            android:textColor="@color/red"
+            android:textStyle="bold"
+            android:layout_marginTop="20dp"
+            tools:ignore="HardcodedText" />
         <com.google.android.material.textfield.TextInputLayout
             style="@style/EditText.OutlinedBox"
             app:shapeAppearance="@style/Rounded"
             app:boxStrokeColor="@color/red"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="5dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textColorHint="@color/red"
-            android:hint="Email ID">
+            android:hint="Email ID"
+            tools:ignore="HardcodedText">
 
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/login_email"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textColor="@color/red"/>
+                android:textColor="@color/black"
+                android:inputType="textEmailAddress"/>
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -54,24 +70,27 @@
             android:textColorHint="@color/red"
             app:endIconTint="@color/red"
             app:endIconMode="password_toggle"
-            android:layout_marginTop="10dp">
+            android:layout_marginTop="10dp"
+            tools:ignore="HardcodedText">
 
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/login_password"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textColor="@color/red"
+                android:textColor="@color/black"
                 android:inputType="textPassword"/>
 
         </com.google.android.material.textfield.TextInputLayout>
 
         <TextView
             android:layout_marginTop="10dp"
-            android:layout_marginLeft="10dp"
+            android:layout_marginStart="10dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="16dp"
+            android:textSize="16sp"
             android:textColor="@color/black"
-            android:text="Forget Password?"/>
+            android:text="Forget Password?"
+            tools:ignore="HardcodedText" />
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/login_btn"
@@ -80,15 +99,15 @@
             android:layout_marginTop="20dp"
             android:text="Login"
             android:textColor="@color/white"
-            android:textSize="20dp"
-            android:background="@drawable/red_round_bg"/>
+            android:textSize="20sp"
+            android:background="@drawable/red_round_bg"
+            tools:ignore="HardcodedText" />
 
         <com.shobhitpuri.custombuttons.GoogleSignInButton
             android:id="@+id/login_with_google"
             android:layout_marginTop="10dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
             android:text="@string/google_sign_up"
             app:isDarkTheme="true" />
 
@@ -104,11 +123,13 @@
             android:layout_marginTop="10dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="16dp"
+            android:textSize="16sp"
             android:textColor="@color/red"
             android:textAlignment="center"
             android:textStyle="bold"
-            android:text="Create new Account"/>
+            android:text="Create new Account"
+            android:focusable="true"
+            tools:ignore="HardcodedText" />
 
     </LinearLayout>
 
