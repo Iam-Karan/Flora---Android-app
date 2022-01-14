@@ -8,7 +8,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:orientation="vertical"
         android:gravity="center"
         android:paddingRight="20dp"
@@ -22,12 +22,15 @@
             android:textColor="@color/red"
             android:textSize="36dp"
             android:textAlignment="center"
-            android:textStyle="bold"/>
+            android:textStyle="bold"
+            tools:ignore="HardcodedText,SpUsage" />
 
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="180dp"
-            android:src="@drawable/flora"/>
+            android:src="@drawable/flora"
+            android:contentDescription="App Logo"
+            tools:ignore="HardcodedText" />
 
         <com.google.android.material.textfield.TextInputLayout
             style="@style/EditText.OutlinedBox"
@@ -36,12 +39,14 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textColorHint="@color/red"
-            android:hint="Name">
+            android:hint="Name"
+            tools:ignore="HardcodedText">
 
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/signup_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textColor="@color/red"/>
+                android:textColor="@color/black"/>
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -52,12 +57,15 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textColorHint="@color/red"
-            android:hint="Email ID">
+            android:hint="Email ID"
+            tools:ignore="HardcodedText">
 
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/signup_email"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textColor="@color/red"/>
+                android:textColor="@color/black"
+                android:inputType="textEmailSubject"/>
 
         </com.google.android.material.textfield.TextInputLayout>
         <com.google.android.material.textfield.TextInputLayout
@@ -67,12 +75,15 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textColorHint="@color/red"
-            android:hint="Phone no">
+            android:hint="Phone no"
+            tools:ignore="HardcodedText">
 
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/signup_phoneno"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textColor="@color/red"/>
+                android:textColor="@color/black"
+                android:inputType="phone"/>
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -86,12 +97,14 @@
             android:hint="Enter password"
             android:textColorHint="@color/red"
             app:endIconTint="@color/red"
-            app:endIconMode="password_toggle">
+            app:endIconMode="password_toggle"
+            tools:ignore="HardcodedText">
 
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/signup_password"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textColor="@color/red"
+                android:textColor="@color/black"
                 android:inputType="textPassword"/>
 
         </com.google.android.material.textfield.TextInputLayout>
@@ -104,12 +117,14 @@
             android:hint="Confirm password"
             android:textColorHint="@color/red"
             app:endIconTint="@color/red"
-            app:endIconMode="password_toggle">
+            app:endIconMode="password_toggle"
+            tools:ignore="HardcodedText">
 
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/signup_confirm_password"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textColor="@color/red"
+                android:textColor="@color/black"
                 android:inputType="textPassword"/>
 
         </com.google.android.material.textfield.TextInputLayout>
@@ -121,15 +136,15 @@
             android:layout_marginTop="20dp"
             android:text="Sign up"
             android:textColor="@color/white"
-            android:textSize="20dp"
-            android:background="@drawable/red_round_bg"/>
+            android:textSize="20sp"
+            android:background="@drawable/red_round_bg"
+            tools:ignore="HardcodedText" />
 
         <com.shobhitpuri.custombuttons.GoogleSignInButton
             android:id="@+id/signup_button_with_google"
             android:layout_marginTop="10dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
             android:text="@string/google_sign_up"
             app:isDarkTheme="true" />
 
@@ -149,21 +164,24 @@
                 android:layout_marginTop="10dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="16dp"
+                android:textSize="16sp"
                 android:textColor="@color/black"
                 android:textStyle="bold"
-                android:text="All ready Have an accoun?"/>
+                android:text="All ready Have an accoun?"
+                tools:ignore="HardcodedText" />
             <TextView
                 android:clickable="true"
-                android:layout_marginLeft="10dp"
+                android:layout_marginStart="10dp"
                 android:id="@+id/login_btn"
                 android:layout_marginTop="10dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="16dp"
+                android:textSize="16sp"
                 android:textColor="@color/red"
                 android:textStyle="bold"
-                android:text="Login"/>
+                android:text="Login"
+                android:focusable="true"
+                tools:ignore="HardcodedText" />
         </LinearLayout>
 
     </LinearLayout>

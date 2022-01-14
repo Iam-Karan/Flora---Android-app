@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "272637853791",
+    "project_id": "flora-giftdeliveryapp",
+    "storage_bucket": "flora-giftdeliveryapp.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:272637853791:android:7fc0d496e18ff4ed8bdbea",
+        "android_client_info": {
+          "package_name": "com.flora.flora"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "272637853791-2vm90ed18umupup5uhj3ql7e4v3dhg9t.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDKYJ8tT5bvdi_GIgzEYHc9WQdzHHvFs4c"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "272637853791-2vm90ed18umupup5uhj3ql7e4v3dhg9t.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
