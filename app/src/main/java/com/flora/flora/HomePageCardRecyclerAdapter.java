@@ -1,6 +1,8 @@
 package com.flora.flora;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,13 +12,17 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.squareup.picasso.Picasso;
+
+import java.io.IOException;
+import java.net.URL;
 import java.util.ArrayList;
 
 public class HomePageCardRecyclerAdapter extends RecyclerView.Adapter<HomePageCardRecyclerAdapter.MyViewHolder> {
 
-    private ArrayList<ProductItemData> productItemData;
+    private ArrayList<ProductData> productItemData;
 
-    public HomePageCardRecyclerAdapter(ArrayList<ProductItemData> productItemData) {
+    public HomePageCardRecyclerAdapter(ArrayList<ProductData> productItemData) {
         this.productItemData = productItemData;
     }
 
@@ -49,11 +55,16 @@ public class HomePageCardRecyclerAdapter extends RecyclerView.Adapter<HomePageCa
     }
 
     @Override
-    public void onBindViewHolder(@NonNull HomePageCardRecyclerAdapter.MyViewHolder holder, int position) {
-        String itemName = productItemData.get(position).getItemName();
-        String itemPrice = productItemData.get(position).getItemPrice();
+    public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
+        String itemName = productItemData.get(position).getName();
+        String itemPrice = "$"+productItemData.get(position).getPrice().toString();
         //Drawable itemImage = productItemData.get(position).getItemImage();
 
+        Picasso.get()
+                .load(productItemData.get(position).getImage())
+                .placeholder(R.drawable.gift)
+                .error(R.drawable.flora)
+                .into(holder.itemImage);
         holder.itemName.setText(itemName);
         holder.itemPrice.setText(itemPrice);
         //holder.itemImage.setImageDrawable(itemImage);

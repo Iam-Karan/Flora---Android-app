@@ -30,33 +30,6 @@
                     android:background="@color/white"
                     android:src="@drawable/gift"/>
 
-
-                <ImageButton
-                    android:id="@+id/homepage_card_add_favorite"
-                    android:visibility="visible"
-                    android:layout_marginBottom="5dp"
-                    android:layout_marginRight="5dp"
-                    android:layout_alignParentEnd="true"
-                    android:layout_alignParentBottom="true"
-                    android:layout_gravity="center_vertical"
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:src="@drawable/ic_baseline_favorite_border_24"
-                    android:background="@drawable/rouned_bg"/>
-
-                <ImageButton
-                    android:id="@+id/homepage_card_remove_favorite"
-                    android:visibility="gone"
-                    android:layout_marginBottom="5dp"
-                    android:layout_marginRight="5dp"
-                    android:layout_alignParentEnd="true"
-                    android:layout_alignParentBottom="true"
-                    android:layout_gravity="center_vertical"
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:src="@drawable/ic_baseline_favorite_24"
-                    android:background="@drawable/rouned_bg"/>
-
             </RelativeLayout>
 
             <TextView

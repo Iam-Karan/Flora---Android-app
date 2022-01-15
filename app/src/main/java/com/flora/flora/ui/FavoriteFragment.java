@@ -12,6 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.flora.flora.HomePageCardRecyclerAdapter;
+import com.flora.flora.ProductData;
 import com.flora.flora.ProductItemData;
 import com.flora.flora.R;
 
@@ -25,7 +26,7 @@ public class FavoriteFragment extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    private ArrayList<ProductItemData> productItemData = new ArrayList<>();
+    private ArrayList<ProductData> productItemData = new ArrayList<>();
     private RecyclerView favoritePageRecyclerView;
 
     public FavoriteFragment() {
@@ -74,7 +75,7 @@ public class FavoriteFragment extends Fragment {
 
     private void setProductsInfo() {
         for(int i = 0; i < 10; i++ ){
-            productItemData.add(new ProductItemData("Favorite item "+i, "150$"));
+            productItemData.add(new ProductData("Flower "+i, "Flower", "150$", "flower", 150.0, "https://firebasestorage.googleapis.com/v0/b/flora-giftdeliveryapp.appspot.com/o/witherroses.jpg?alt=media&token=d6f6a5e4-ebb5-49ab-8386-d071ace41a18"));
         }
     }
 }

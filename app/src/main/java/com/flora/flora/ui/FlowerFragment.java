@@ -12,13 +12,18 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.flora.flora.CustomizeBoquetActivity;
 import com.flora.flora.HomePageCardRecyclerAdapter;
+import com.flora.flora.ProductData;
 import com.flora.flora.ProductItemData;
 import com.flora.flora.R;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class FlowerFragment extends Fragment {
 
@@ -28,10 +33,12 @@ public class FlowerFragment extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    private ArrayList<ProductItemData> productItemData = new ArrayList<>();
+    private ArrayList<ProductData> productItemData = new ArrayList<>();
     private RecyclerView flowerPageRecyclerView;
+    HomePageCardRecyclerAdapter adapter;
     private AppCompatButton costomizeBoquetButton;
 
+    FirebaseFirestore firestore;
     public FlowerFragment() {
         // Required empty public constructor
     }
@@ -58,7 +65,7 @@ public class FlowerFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_flower, container, false);
-
+        firestore = FirebaseFirestore.getInstance();
         flowerPageRecyclerView = view.findViewById(R.id.flower_recyclerView);
         costomizeBoquetButton = view.findViewById(R.id.customize_boquet_btn);
         setProductsInfo();
@@ -76,7 +83,7 @@ public class FlowerFragment extends Fragment {
     }
 
     private void setAdapter() {
-        HomePageCardRecyclerAdapter adapter = new HomePageCardRecyclerAdapter(productItemData);
+        adapter = new HomePageCardRecyclerAdapter(productItemData);
         RecyclerView.LayoutManager layoutManager = new GridLayoutManager(getContext(), 2);
         flowerPageRecyclerView.setLayoutManager(layoutManager);
         flowerPageRecyclerView.setItemAnimator(new DefaultItemAnimator());
@@ -84,8 +91,23 @@ public class FlowerFragment extends Fragment {
     }
 
     private void setProductsInfo() {
-        for(int i = 0; i < 10; i++ ){
-            productItemData.add(new ProductItemData("Flower "+i, "150$"));
-        }
+        firestore.collection("products").get()
+                .addOnSuccessListener(queryDocumentSnapshots -> {
+                    if (!queryDocumentSnapshots.isEmpty()) {
+
+                        List<DocumentSnapshot> list = queryDocumentSnapshots.getDocuments();
+                        for (DocumentSnapshot d : list) {
+
+                            ProductData data = d.toObject(ProductData.class);
+                            String type = data.getType();
+                            if(type.equals("bouquet")){
+                                productItemData.add(data);
+                            }
+                        }
+                        adapter.notifyDataSetChanged();
+                    } else {
+                        Toast.makeText(getContext(), "No data found in Database", Toast.LENGTH_SHORT).show();
+                    }
+                }).addOnFailureListener(e -> Toast.makeText(getContext(), "Fail to get the data.", Toast.LENGTH_SHORT).show());
     }
 }
