@@ -62,7 +62,6 @@ public class GiftFragment extends Fragment {
         firestore = FirebaseFirestore.getInstance();
         giftPageRecyclerView = view.findViewById(R.id.gift_recyclerView);
 
-
         setAdapter();
         setProductsInfo();
         return view;

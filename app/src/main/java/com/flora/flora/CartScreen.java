@@ -108,6 +108,13 @@ public class CartScreen extends AppCompatActivity {
                     }
                 });
     }
+
+    public void reloadActivity(){
+        finish();
+        overridePendingTransition(0, 0);
+        startActivity(getIntent());
+        overridePendingTransition(0, 0);
+    }
     @Override
     public void onBackPressed() {
         Intent intent = new Intent(this, MainActivity.class);

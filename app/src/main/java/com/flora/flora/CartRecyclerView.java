@@ -97,8 +97,7 @@ public class CartRecyclerView extends RecyclerView.Adapter<CartRecyclerView.Cart
                 .delete()
                 .addOnSuccessListener(unused -> {
                     Toast.makeText(context, "Item removed From Favourite successfully!", Toast.LENGTH_SHORT).show();
-                    Intent intent = new Intent(context, CartScreen.class);
-                    context.startActivity(intent);
+                    ((CartScreen) context).reloadActivity();
                 })
                 .addOnFailureListener(e -> Log.w("error", e.toString()));
     }
