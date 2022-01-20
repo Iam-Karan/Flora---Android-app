@@ -1,5 +1,6 @@
 package com.flora.flora.ui;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -27,7 +28,7 @@ public class GiftFragment extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    private ArrayList<ProductData> productItemData = new ArrayList<>();
+    private final ArrayList<ProductData> productItemData = new ArrayList<>();
     private RecyclerView giftPageRecyclerView;
 
     FirebaseFirestore firestore;
@@ -75,6 +76,7 @@ public class GiftFragment extends Fragment {
         giftPageRecyclerView.setAdapter(adapter);
     }
 
+    @SuppressLint("NotifyDataSetChanged")
     private void setProductsInfo() {
         firestore.collection("products").get()
                 .addOnSuccessListener(queryDocumentSnapshots -> {
@@ -84,6 +86,7 @@ public class GiftFragment extends Fragment {
                         for (DocumentSnapshot d : list) {
 
                             ProductData data = d.toObject(ProductData.class);
+                            assert data != null;
                             String type = data.getType();
                             if(type.equals("flower")  || type.equals("bouquet")){
 

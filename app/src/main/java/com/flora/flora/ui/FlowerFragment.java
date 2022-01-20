@@ -1,5 +1,6 @@
 package com.flora.flora.ui;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 
@@ -17,7 +18,6 @@ import android.widget.Toast;
 import com.flora.flora.CustomizeBoquetActivity;
 import com.flora.flora.HomePageCardRecyclerAdapter;
 import com.flora.flora.ProductData;
-import com.flora.flora.ProductItemData;
 import com.flora.flora.R;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -33,7 +33,7 @@ public class FlowerFragment extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    private ArrayList<ProductData> productItemData = new ArrayList<>();
+    private final ArrayList<ProductData> productItemData = new ArrayList<>();
     private RecyclerView flowerPageRecyclerView;
     HomePageCardRecyclerAdapter adapter;
     private AppCompatButton costomizeBoquetButton;
@@ -71,12 +71,9 @@ public class FlowerFragment extends Fragment {
         setProductsInfo();
         setAdapter();
 
-        costomizeBoquetButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(getContext(), CustomizeBoquetActivity.class);
-                startActivity(intent);
-            }
+        costomizeBoquetButton.setOnClickListener(view1 -> {
+            Intent intent = new Intent(getContext(), CustomizeBoquetActivity.class);
+            startActivity(intent);
         });
 
         return view;
@@ -90,6 +87,7 @@ public class FlowerFragment extends Fragment {
         flowerPageRecyclerView.setAdapter(adapter);
     }
 
+    @SuppressLint("NotifyDataSetChanged")
     private void setProductsInfo() {
         firestore.collection("products").get()
                 .addOnSuccessListener(queryDocumentSnapshots -> {
@@ -99,6 +97,7 @@ public class FlowerFragment extends Fragment {
                         for (DocumentSnapshot d : list) {
 
                             ProductData data = d.toObject(ProductData.class);
+                            assert data != null;
                             String type = data.getType();
                             if(type.equals("bouquet")){
                                 productItemData.add(data);

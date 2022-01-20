@@ -153,6 +153,7 @@ public class ProductDetailScreen extends AppCompatActivity {
                 });
     }
 
+    @SuppressLint("SetTextI18n")
     public void addToCart(){
 
         firestore.collection("users").document(uId).collection("cart").get()
@@ -192,6 +193,7 @@ public class ProductDetailScreen extends AppCompatActivity {
 
     }
 
+    @SuppressLint("SetTextI18n")
     public void addProductToCart(){
         DocumentReference documentReference = firestore.collection("users").document(uId).collection("cart").document(prductId);
 

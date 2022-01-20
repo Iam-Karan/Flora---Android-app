@@ -11,47 +11,67 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
         <LinearLayout
+            android:id="@+id/favorite_items"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginTop="20dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp">
-
-            <androidx.appcompat.widget.SearchView
-                android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="9"
-                android:id="@+id/searchView"
-                app:defaultQueryHint="search"
-                android:layout_alignParentRight="true"
-                android:background="@drawable/rouned_bg"
-                app:searchIcon="@drawable/ic_baseline_search_24"/>
-
-            <ImageButton
+                android:orientation="horizontal"
+                android:layout_marginTop="20dp"
                 android:layout_marginLeft="10dp"
-                android:layout_gravity="center_vertical"
-                android:id="@+id/filter"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:src="@drawable/ic_baseline_filter_list_24"
-                android:background="@drawable/rouned_bg"/>
+                android:layout_marginRight="10dp">
+
+                <androidx.appcompat.widget.SearchView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="9"
+                    android:id="@+id/searchView"
+                    app:defaultQueryHint="search"
+                    android:layout_alignParentRight="true"
+                    android:background="@drawable/rouned_bg"
+                    app:searchIcon="@drawable/ic_baseline_search_24"/>
+
+                <ImageButton
+                    android:layout_marginLeft="10dp"
+                    android:layout_gravity="center_vertical"
+                    android:id="@+id/filter"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:src="@drawable/ic_baseline_filter_list_24"
+                    android:background="@drawable/rouned_bg"/>
+            </LinearLayout>
+
+            <GridLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:columnCount="2"
+                android:layout_marginTop="10dp"
+                android:padding="10dp">
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/gift_recyclerView"
+                    android:layout_height="match_parent"
+                    android:layout_width="match_parent"/>
+
+            </GridLayout>
         </LinearLayout>
-
-        <GridLayout
+        <LinearLayout
+            android:id="@+id/no_item_found"
             android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:background="@color/inputtextcolor"
+            android:visibility="gone">
+        <TextView
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:columnCount="2"
-            android:layout_marginTop="10dp"
-            android:padding="10dp">
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/gift_recyclerView"
-                android:layout_height="match_parent"
-                android:layout_width="match_parent"/>
-
-        </GridLayout>
-
+            android:text="No item found"
+            android:textColor="@color/inactivecolor"
+            android:textSize="32sp"/>
+        </LinearLayout>
     </LinearLayout>
 
 </FrameLayout>
