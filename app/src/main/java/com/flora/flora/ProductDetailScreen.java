@@ -21,6 +21,7 @@ import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.squareup.picasso.Picasso;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
@@ -36,6 +37,7 @@ public class ProductDetailScreen extends AppCompatActivity {
     String prductId;
     String uId;
     int count = 1;
+    ArrayList<String> productIds = new ArrayList<>();
 
     FirebaseFirestore firestore;
     @SuppressLint("SetTextI18n")
@@ -164,24 +166,14 @@ public class ProductDetailScreen extends AppCompatActivity {
                                 if (document.exists()) {
                                     CartModel data = document.toObject(CartModel.class);
                                     assert data != null;
-
-                                    if(prductId.equals(data.getProductid())){
-                                        String itemCountString = data.getQuantity();
-                                        int itemCountInt = Integer.parseInt(itemCountString);
-                                        int updatedItemCount = itemCountInt + count;
-
-                                        Map<String, Object> product = new HashMap<>();
-                                        product.put("productid", prductId);
-                                        product.put("quantity", ""+updatedItemCount);
-                                        firestore.collection("users").document(uId).collection("cart").document(prductId)
-                                                .update(product)
-                                                .addOnSuccessListener(unused -> {
-                                                    count = 1;
-                                                    itemCount.setText(""+count);
-                                                    Toast.makeText(getApplicationContext(), "Item Added successfully!", Toast.LENGTH_SHORT).show();
-                                                }).addOnFailureListener(e -> Toast.makeText(getApplicationContext(), e.toString(), Toast.LENGTH_SHORT).show());
-                                    }
+                                    productIds.add(data.getProductid());
                                 }
+                            }
+                            if(productIds.contains(prductId)){
+                                updateCart(prductId, ""+count);
+                            }
+                            else {
+                                addProductToCart();
                             }
                         } else {
                             addProductToCart();
@@ -205,6 +197,22 @@ public class ProductDetailScreen extends AppCompatActivity {
             itemCount.setText(""+count);
             Toast.makeText(getApplicationContext(), "Item Added successfully!", Toast.LENGTH_SHORT).show();
         }).addOnFailureListener(e -> Toast.makeText(getApplicationContext(), e.toString(), Toast.LENGTH_SHORT).show());
+    }
+
+    public void updateCart(String prductId, String quntity){
+        int itemCountInt = Integer.parseInt(quntity);
+        int updatedItemCount = itemCountInt + count;
+
+        Map<String, Object> product = new HashMap<>();
+        product.put("productid", prductId);
+        product.put("quantity", ""+updatedItemCount);
+        firestore.collection("users").document(uId).collection("cart").document(prductId)
+                .update(product)
+                .addOnSuccessListener(unused -> {
+                    count = 1;
+                    itemCount.setText(""+count);
+                    Toast.makeText(getApplicationContext(), "Item Added successfully!", Toast.LENGTH_SHORT).show();
+                }).addOnFailureListener(e -> Toast.makeText(getApplicationContext(), e.toString(), Toast.LENGTH_SHORT).show());
     }
 
     public void setAddToFavourite(){
