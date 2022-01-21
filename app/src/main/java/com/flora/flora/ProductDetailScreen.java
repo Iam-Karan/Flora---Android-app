@@ -34,6 +34,7 @@ public class ProductDetailScreen extends AppCompatActivity {
     ImageButton backImageButton, addButton, removeButton, addToFavourite, removeFavourite;
     ImageView productImage;
     AppCompatButton addtoCart;
+    FirebaseUser mFirebaseUser;
     String prductId;
     String uId;
     int count = 1;
@@ -53,11 +54,25 @@ public class ProductDetailScreen extends AppCompatActivity {
         prductId = intent.getExtras().getString("ProductId");
         FirebaseAuth mAuth = FirebaseAuth.getInstance();
         firestore = FirebaseFirestore.getInstance();
-        FirebaseUser mFirebaseUser = mAuth.getCurrentUser();
-        assert mFirebaseUser != null;
-        uId = mFirebaseUser.getUid();
+        mFirebaseUser = mAuth.getCurrentUser();
 
         findId();
+        if(mFirebaseUser != null){
+            uId = mFirebaseUser.getUid();
+            addToFavourite.setOnClickListener(view -> {
+                setAddToFavourite();
+                removeFavourite.setVisibility(View.VISIBLE);
+                addToFavourite.setVisibility(View.GONE);
+            });
+
+            removeFavourite.setOnClickListener(view -> {
+                setRemoveFavourite();
+                addToFavourite.setVisibility(View.VISIBLE);
+                removeFavourite.setVisibility(View.GONE);
+            });
+
+            addtoCart.setOnClickListener(view -> addToCart());
+        }
         setData();
 
         addButton.setOnClickListener(view -> {
@@ -72,19 +87,6 @@ public class ProductDetailScreen extends AppCompatActivity {
             }
         });
 
-        addToFavourite.setOnClickListener(view -> {
-            setAddToFavourite();
-            removeFavourite.setVisibility(View.VISIBLE);
-            addToFavourite.setVisibility(View.GONE);
-        });
-
-        removeFavourite.setOnClickListener(view -> {
-            setRemoveFavourite();
-            addToFavourite.setVisibility(View.VISIBLE);
-            removeFavourite.setVisibility(View.GONE);
-        });
-
-        addtoCart.setOnClickListener(view -> addToCart());
 
         backImageButton.setOnClickListener(view -> onBackPressed());
 
@@ -133,27 +135,29 @@ public class ProductDetailScreen extends AppCompatActivity {
         }).addOnFailureListener(e -> Log.d("error", e.toString()));
 
 
-        firestore.collection("users").document(uId).collection("favourite").get()
-                .addOnCompleteListener(task -> {
-                    if (task.isSuccessful()) {
-                        if(Objects.requireNonNull(task.getResult()).size() > 0) {
-                            for (DocumentSnapshot document : task.getResult()) {
-                                if (document.exists()) {
-                                    if(prductId.equals(document.getId())){
-                                        removeFavourite.setVisibility(View.VISIBLE);
-                                        addToFavourite.setVisibility(View.GONE);
+        if(mFirebaseUser !=  null){
+            firestore.collection("users").document(uId).collection("favourite").get()
+                    .addOnCompleteListener(task -> {
+                        if (task.isSuccessful()) {
+                            if(Objects.requireNonNull(task.getResult()).size() > 0) {
+                                for (DocumentSnapshot document : task.getResult()) {
+                                    if (document.exists()) {
+                                        if(prductId.equals(document.getId())){
+                                            removeFavourite.setVisibility(View.VISIBLE);
+                                            addToFavourite.setVisibility(View.GONE);
+                                        }
                                     }
-                                }
 
+                                }
+                            } else {
+                                removeFavourite.setVisibility(View.GONE);
+                                addToFavourite.setVisibility(View.VISIBLE);
                             }
                         } else {
-                            removeFavourite.setVisibility(View.GONE);
-                            addToFavourite.setVisibility(View.VISIBLE);
+                            Toast.makeText(getApplicationContext(), "Task Fails to get Favourite products", Toast.LENGTH_SHORT).show();
                         }
-                    } else {
-                        Toast.makeText(getApplicationContext(), "Task Fails to get Favourite products", Toast.LENGTH_SHORT).show();
-                    }
-                });
+                    });
+        }
     }
 
     @SuppressLint("SetTextI18n")

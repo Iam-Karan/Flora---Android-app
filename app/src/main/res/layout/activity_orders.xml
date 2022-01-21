@@ -38,22 +38,43 @@
 
     </androidx.appcompat.widget.Toolbar>
 
-    <ScrollView
+    <LinearLayout
+        android:id="@+id/order_list"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-        <LinearLayout
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
+            android:layout_height="match_parent">
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/order_recyclerView"
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_width="match_parent"/>
+                android:orientation="vertical">
 
-        </LinearLayout>
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/order_recyclerView"
+                    android:layout_height="match_parent"
+                    android:layout_width="match_parent"/>
 
-    </ScrollView>
+            </LinearLayout>
+
+        </ScrollView>
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/no_item_found"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:background="@color/inputtextcolor"
+        android:visibility="gone">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="No item found"
+            android:textColor="@color/inactivecolor"
+            android:textSize="32sp"/>
+    </LinearLayout>
 
 </LinearLayout>

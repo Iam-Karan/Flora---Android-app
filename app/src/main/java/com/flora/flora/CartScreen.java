@@ -9,7 +9,9 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ImageButton;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -27,6 +29,7 @@ public class CartScreen extends AppCompatActivity {
     Toolbar toolbar;
     ImageButton backImageButton;
     AppCompatButton checkOutButton;
+    LinearLayout withdata, noData;
     private final ArrayList<CartProductData> cartProductData = new ArrayList<>();
     FirebaseFirestore firestore;
     String uId;
@@ -43,21 +46,27 @@ public class CartScreen extends AppCompatActivity {
         FirebaseAuth mAuth = FirebaseAuth.getInstance();
         firestore = FirebaseFirestore.getInstance();
         FirebaseUser mFirebaseUser = mAuth.getCurrentUser();
-        assert mFirebaseUser != null;
-        uId = mFirebaseUser.getUid();
         findId();
-        setData();
-        setAdapter();
-
+        if(mFirebaseUser == null){
+            noData.setVisibility(View.VISIBLE);
+            withdata.setVisibility(View.GONE);
+        }
+        else {
+            uId = mFirebaseUser.getUid();
+            setData();
+            setAdapter();
+            checkOutButton.setOnClickListener(view -> {
+                Intent intent  = new Intent(getBaseContext(), ShipingActivity.class);
+                intent.putExtra("SubTotal", subTotal);
+                startActivity(intent);
+            });
+        }
         backImageButton.setOnClickListener(view -> onBackPressed());
-        checkOutButton.setOnClickListener(view -> {
-            Intent intent  = new Intent(getBaseContext(), ShipingActivity.class);
-            intent.putExtra("SubTotal", subTotal);
-            startActivity(intent);
-        });
     }
 
     public void findId(){
+        withdata = findViewById(R.id.cart_date);
+        noData = findViewById(R.id.no_item_found);
         cartRecyclerView = findViewById(R.id.cart_recyclerview);
         backImageButton = findViewById(R.id.back_button);
         checkOutButton = findViewById(R.id.checkout_btn);
@@ -91,7 +100,7 @@ public class CartScreen extends AppCompatActivity {
                                                         ProductData productData = d.toObject(ProductData.class);
                                                         assert productData != null;
                                                         String itemId = productData.getId();
-                                                        Double price = Double.parseDouble(productData.getPrice().toString());
+                                                        double price = Double.parseDouble(productData.getPrice().toString());
                                                         if(itemId.equals(docId)){
                                                             assert data != null;
                                                             int count = Integer.parseInt(data.getQuantity());
@@ -105,11 +114,18 @@ public class CartScreen extends AppCompatActivity {
                                                     Toast.makeText(getBaseContext(), "No data found in Database", Toast.LENGTH_SHORT).show();
                                                 }
                                             }).addOnFailureListener(e -> Toast.makeText(getBaseContext(), "Fail to get the data.", Toast.LENGTH_SHORT).show());
+                                }else {
+                                    noData.setVisibility(View.VISIBLE);
+                                    withdata.setVisibility(View.GONE);
                                 }
                             }
+                        }else {
+                            noData.setVisibility(View.VISIBLE);
+                            withdata.setVisibility(View.GONE);
                         }
                     } else {
-                        Toast.makeText(getBaseContext(), "Task Fails to get Cart products", Toast.LENGTH_SHORT).show();
+                        noData.setVisibility(View.VISIBLE);
+                        withdata.setVisibility(View.GONE);
                     }
                 });
     }

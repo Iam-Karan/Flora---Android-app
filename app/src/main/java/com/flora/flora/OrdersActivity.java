@@ -9,7 +9,9 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.ImageButton;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -29,6 +31,7 @@ public class OrdersActivity extends AppCompatActivity {
     private ArrayList<String> orderName = new ArrayList<>();
     private ArrayList<String> orderAddress = new ArrayList<>();
     private ArrayList<String> orderid = new ArrayList<>();
+    LinearLayout orderData, noOrderData;
     FirebaseFirestore firestore;
     String uId;
     OrderAdapter adapter;
@@ -42,15 +45,23 @@ public class OrdersActivity extends AppCompatActivity {
         FirebaseAuth mAuth = FirebaseAuth.getInstance();
         firestore = FirebaseFirestore.getInstance();
         FirebaseUser mFirebaseUser = mAuth.getCurrentUser();
-        assert mFirebaseUser != null;
-        uId = mFirebaseUser.getUid();
         findId();
-        setData();
+        if(mFirebaseUser != null){
+            orderData.setVisibility(View.VISIBLE);
+            noOrderData.setVisibility(View.GONE);
+            uId = mFirebaseUser.getUid();
+            setData();
+        }else {
+            orderData.setVisibility(View.GONE);
+            noOrderData.setVisibility(View.VISIBLE);
+        }
         backImageButton.setOnClickListener(view -> onBackPressed());
 
     }
 
     public void findId(){
+        orderData = findViewById(R.id.order_list);
+        noOrderData = findViewById(R.id.no_item_found);
         orderRecyclerView = findViewById(R.id.order_recyclerView);
         backImageButton = findViewById(R.id.back_button);
     }
@@ -95,6 +106,9 @@ public class OrdersActivity extends AppCompatActivity {
                                         }
                                     }).addOnFailureListener(e -> Log.d("error", e.toString()));
 
+                                }else {
+                                    orderData.setVisibility(View.GONE);
+                                    noOrderData.setVisibility(View.VISIBLE);
                                 }
                             }
                         }

@@ -9,7 +9,6 @@ import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.View;
 import android.widget.ImageButton;
 import android.widget.RadioButton;
 import android.widget.TextView;
@@ -142,19 +141,19 @@ public class OrderTrackActivity extends AppCompatActivity {
                            orderPreparedTextView.setText(prepared);
                            if(deliverd.isEmpty()){
                                orderDeliverdTextView.setText(delevering);
-                               if(checkTime(hour, minute, 20)){
-                                   if( (minute + 40) >= 60){
-                                       minute = (minute + 40) - 60;
+                               if(checkTime(hour, minute, 59)){
+                                   if( (minute + 59) >= 60){
+                                       minute = (minute + 59) - 60;
                                        hour = hour + 1;
                                        updateDeliverdOrder(hour, minute, day , date);
                                    }else{
-                                       updateDeliverdOrder(hour, (minute + 40), day , date);
+                                       updateDeliverdOrder(hour, (minute + 59), day , date);
                                    }
 
                                }
                            }else {
                                orderDeliverdRadioButton.setChecked(true);
-                               orderDeliverdTextView.setText(confiremed);
+                               orderDeliverdTextView.setText(deliverd);
                            }
                        }
                    }
@@ -194,27 +193,21 @@ public class OrderTrackActivity extends AppCompatActivity {
         String time = hour+":"+mint+", "+day+", "+date;
         firestore.collection("users").document(uId).collection("order").document(orderId)
                 .update("confirmed", time)
-                .addOnSuccessListener(unused -> {
-                    setData();
-                }).addOnFailureListener(e -> Toast.makeText(getApplicationContext(), e.toString(), Toast.LENGTH_SHORT).show());
+                .addOnSuccessListener(unused -> setData()).addOnFailureListener(e -> Toast.makeText(getApplicationContext(), e.toString(), Toast.LENGTH_SHORT).show());
     }
     @RequiresApi(api = Build.VERSION_CODES.O)
     public void upadtePreparedOrder(int hour, int mint, String day, String date){
         String time = hour+":"+mint+", "+day+", "+date;
         firestore.collection("users").document(uId).collection("order").document(orderId)
                 .update("prepared", time)
-                .addOnSuccessListener(unused -> {
-                    setData();
-                }).addOnFailureListener(e -> Toast.makeText(getApplicationContext(), e.toString(), Toast.LENGTH_SHORT).show());
+                .addOnSuccessListener(unused -> setData()).addOnFailureListener(e -> Toast.makeText(getApplicationContext(), e.toString(), Toast.LENGTH_SHORT).show());
     }
     @RequiresApi(api = Build.VERSION_CODES.O)
     public void updateDeliverdOrder(int hour, int mint, String day, String date){
         String time = hour+":"+mint+", "+day+", "+date;
         firestore.collection("users").document(uId).collection("order").document(orderId)
                 .update("deliverd", time)
-                .addOnSuccessListener(unused -> {
-                    setData();
-                }).addOnFailureListener(e -> Toast.makeText(getApplicationContext(), e.toString(), Toast.LENGTH_SHORT).show());
+                .addOnSuccessListener(unused -> setData()).addOnFailureListener(e -> Toast.makeText(getApplicationContext(), e.toString(), Toast.LENGTH_SHORT).show());
     }
 
     @Override

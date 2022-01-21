@@ -74,11 +74,17 @@ public class FavoriteFragment extends Fragment {
         favoritePageRecyclerView = view.findViewById(R.id.favorite_recyclerView);
         favouriteList = view.findViewById(R.id.favorite_items);
         noItemFound = view.findViewById(R.id.no_item_found);
-        assert mFirebaseUser != null;
-        uId = mFirebaseUser.getUid();
+        if(mFirebaseUser != null){
+            favouriteList.setVisibility(View.VISIBLE);
+            noItemFound.setVisibility(View.GONE);
+            uId = mFirebaseUser.getUid();
+            setProductsInfo();
+            setAdapter();
+        }else {
+            favouriteList.setVisibility(View.GONE);
+            noItemFound.setVisibility(View.VISIBLE);
+        }
 
-        setProductsInfo();
-        setAdapter();
 
         return view;
     }
@@ -132,7 +138,8 @@ public class FavoriteFragment extends Fragment {
                         }
                         adapter.notifyDataSetChanged();
                     } else {
-                        Toast.makeText(getContext(), "No data found in Database", Toast.LENGTH_SHORT).show();
+                        favouriteList.setVisibility(View.GONE);
+                        noItemFound.setVisibility(View.VISIBLE);
                     }
                 }).addOnFailureListener(e -> Toast.makeText(getContext(), "Fail to get the data.", Toast.LENGTH_SHORT).show());
     }

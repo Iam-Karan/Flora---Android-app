@@ -11,8 +11,6 @@ import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 
-import android.util.Log;
-import android.view.View;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
@@ -33,7 +31,6 @@ public class CustomizeBoquetActivity extends AppCompatActivity {
     Toolbar toolbar;
     ImageButton backImageButton;
     private final ArrayList<CartProductData> productItemData = new ArrayList<>();
-    private final ArrayList<CartProductData> cartProductData = new ArrayList<>();
     private RecyclerView flowerRecyclerView;
     ArrayList<String> productIds = new ArrayList<>();
     ArrayList<String> productCount = new ArrayList<>();
@@ -52,22 +49,23 @@ public class CustomizeBoquetActivity extends AppCompatActivity {
         firestore = FirebaseFirestore.getInstance();
         FirebaseAuth mAuth = FirebaseAuth.getInstance();
         FirebaseUser mFirebaseUser = mAuth.getCurrentUser();
-        assert mFirebaseUser != null;
-        uId = mFirebaseUser.getUid();
         findId();
+        if(mFirebaseUser != null){
+            uId = mFirebaseUser.getUid();
+            createBoquet.setOnClickListener(view -> {
+                for(int i = 0; i < productItemData.size(); i++){
+                    String productId = productItemData.get(i).getProductData().getId();
+                    int count = Integer.parseInt(productItemData.get(i).getQuantity());
+                    if(count > 0) {
+                        addToCart(productId, count);
+                    }
+                }
+            });
+        }
 
         setProductsInfo();
         setAdapter();
 
-        createBoquet.setOnClickListener(view -> {
-            for(int i = 0; i < productItemData.size(); i++){
-                String productId = productItemData.get(i).getProductData().getId();
-                int count = Integer.parseInt(productItemData.get(i).getQuantity());
-                if(count > 0) {
-                    addToCart(productId, count);
-                }
-            }
-        });
         backImageButton.setOnClickListener(view -> onBackPressed());
     }
     public void findId(){
