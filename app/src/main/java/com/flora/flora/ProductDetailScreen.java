@@ -40,6 +40,7 @@ public class ProductDetailScreen extends AppCompatActivity {
     ArrayList<String> productIds = new ArrayList<>();
 
     FirebaseFirestore firestore;
+
     @SuppressLint("SetTextI18n")
     @Override
     protected void onCreate(Bundle savedInstanceState) {

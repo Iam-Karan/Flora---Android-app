@@ -203,6 +203,8 @@ public class ShipingActivity extends AppCompatActivity {
         orderData.put("confirmed", "");
         orderData.put("prepared", "");
         orderData.put("deliverd", "");
+        orderData.put("hour", ""+hour);
+        orderData.put("minute", ""+minute);
         documentReference.set(orderData).addOnSuccessListener(unused -> {
             for(int i = 0; i < cartData.size(); i++){
                 String productId = cartData.get(i).getProductid();
