@@ -34,7 +34,7 @@
         <entry key="..\:/Users/patel/AndroidStudioProjects/Flora/app/src/main/res/layout/activity_login_screen.xml" value="0.25" />
         <entry key="..\:/Users/patel/AndroidStudioProjects/Flora/app/src/main/res/layout/activity_main.xml" value="0.264" />
         <entry key="..\:/Users/patel/AndroidStudioProjects/Flora/app/src/main/res/layout/activity_order_track.xml" value="0.25" />
-        <entry key="..\:/Users/patel/AndroidStudioProjects/Flora/app/src/main/res/layout/activity_orders.xml" value="0.25" />
+        <entry key="..\:/Users/patel/AndroidStudioProjects/Flora/app/src/main/res/layout/activity_orders.xml" value="0.264" />
         <entry key="..\:/Users/patel/AndroidStudioProjects/Flora/app/src/main/res/layout/activity_product_detail_screen.xml" value="0.25" />
         <entry key="..\:/Users/patel/AndroidStudioProjects/Flora/app/src/main/res/layout/activity_shiping.xml" value="0.25" />
         <entry key="..\:/Users/patel/AndroidStudioProjects/Flora/app/src/main/res/layout/activity_signup_screen.xml" value="0.25" />
@@ -51,6 +51,7 @@
         <entry key="..\:/Users/patel/AndroidStudioProjects/Flora/app/src/main/res/layout/fragment_home.xml" value="0.25" />
         <entry key="..\:/Users/patel/AndroidStudioProjects/Flora/app/src/main/res/layout/homepage_card.xml" value="0.25" />
         <entry key="..\:/Users/patel/AndroidStudioProjects/Flora/app/src/main/res/layout/nav_header_main.xml" value="0.175" />
+        <entry key="..\:/Users/patel/AndroidStudioProjects/Flora/app/src/main/res/layout/order_card.xml" value="0.25" />
         <entry key="..\:/Users/patel/AndroidStudioProjects/Flora/app/src/main/res/menu/activity_main_drawer.xml" value="0.1782312925170068" />
         <entry key="..\:/Users/patel/AndroidStudioProjects/Flora/app/src/main/res/menu/main.xml" value="0.25" />
         <entry key="..\:/Users/patel/AndroidStudioProjects/Flora/app/src/main/res/menu/navigation.xml" value="0.25" />

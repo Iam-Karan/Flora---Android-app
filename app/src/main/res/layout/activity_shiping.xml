@@ -60,9 +60,10 @@
                 android:hint="First Name">
 
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/shiping_first_name"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textColor="@color/red"/>
+                    android:textColor="@color/black"/>
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -76,9 +77,10 @@
                 android:hint="Last Name">
 
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/shiping_last_name"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textColor="@color/red"/>
+                    android:textColor="@color/black"/>
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -92,9 +94,10 @@
                 android:hint="Address Line 1">
 
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/shiping_address_line"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textColor="@color/red"/>
+                    android:textColor="@color/black"/>
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -108,9 +111,10 @@
                 android:hint="City">
 
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/shiping_city"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textColor="@color/red"/>
+                    android:textColor="@color/black"/>
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -124,9 +128,10 @@
                 android:hint="Zip code">
 
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/shiping_zipcode"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textColor="@color/red"/>
+                    android:textColor="@color/black"/>
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -140,9 +145,10 @@
                 android:hint="State">
 
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/shiping_state"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textColor="@color/red"/>
+                    android:textColor="@color/black"/>
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -156,9 +162,10 @@
                 android:hint="Country">
 
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/shiping_country"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textColor="@color/red"/>
+                    android:textColor="@color/black"/>
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -172,10 +179,11 @@
                 android:hint="Add Note">
 
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/shiping_note"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:minLines="5"
-                    android:textColor="@color/red"/>
+                    android:textColor="@color/black"/>
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -218,6 +226,7 @@
                                     android:textSize="18sp"
                                     android:text="Sub Total"/>
                                 <TextView
+                                    android:id="@+id/shiping_subtotal"
                                     android:layout_width="0dp"
                                     android:layout_height="wrap_content"
                                     android:layout_weight="3"
@@ -239,6 +248,7 @@
                                     android:textColor="@color/white"
                                     android:text="Discount"/>
                                 <TextView
+                                    android:id="@+id/shiping_discount"
                                     android:layout_width="0dp"
                                     android:layout_height="wrap_content"
                                     android:layout_weight="3"
@@ -260,6 +270,7 @@
                                     android:textColor="@color/white"
                                     android:text="Estimated Tax"/>
                                 <TextView
+                                    android:id="@+id/shiping_tax"
                                     android:layout_width="0dp"
                                     android:layout_height="wrap_content"
                                     android:layout_weight="3"
@@ -267,8 +278,6 @@
                                     android:textColor="@color/white"
                                     android:text="$2.61"/>
                             </LinearLayout>
-
-
 
                             <LinearLayout
                                 android:layout_width="match_parent"
@@ -313,6 +322,7 @@
                                 android:textStyle="bold"
                                 android:text="Sub Total"/>
                             <TextView
+                                android:id="@+id/shiping_total"
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="3"
@@ -327,6 +337,7 @@
                 </com.google.android.material.card.MaterialCardView>
 
                 <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/shiping_buy"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
                     android:layout_marginTop="10dp"

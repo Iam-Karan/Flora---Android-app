@@ -32,6 +32,7 @@ public class CartScreen extends AppCompatActivity {
     String uId;
     private RecyclerView cartRecyclerView;
     CartRecyclerView adapter;
+    double subTotal = 0.0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -51,6 +52,7 @@ public class CartScreen extends AppCompatActivity {
         backImageButton.setOnClickListener(view -> onBackPressed());
         checkOutButton.setOnClickListener(view -> {
             Intent intent  = new Intent(getBaseContext(), ShipingActivity.class);
+            intent.putExtra("SubTotal", subTotal);
             startActivity(intent);
         });
     }
@@ -89,8 +91,11 @@ public class CartScreen extends AppCompatActivity {
                                                         ProductData productData = d.toObject(ProductData.class);
                                                         assert productData != null;
                                                         String itemId = productData.getId();
+                                                        Double price = Double.parseDouble(productData.getPrice().toString());
                                                         if(itemId.equals(docId)){
                                                             assert data != null;
+                                                            int count = Integer.parseInt(data.getQuantity());
+                                                            subTotal = subTotal + (price * count);
                                                             CartProductData cartData = new CartProductData(productData, data.getQuantity());
                                                             cartProductData.add(cartData);
                                                         }
@@ -104,7 +109,7 @@ public class CartScreen extends AppCompatActivity {
                             }
                         }
                     } else {
-                        Toast.makeText(getBaseContext(), "Task Fails to get Favourite products", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getBaseContext(), "Task Fails to get Cart products", Toast.LENGTH_SHORT).show();
                     }
                 });
     }
