@@ -12,6 +12,7 @@ public class OrderTrackActivity extends AppCompatActivity {
 
     Toolbar toolbar;
     ImageButton backImageButton;
+    String orderId;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -19,13 +20,10 @@ public class OrderTrackActivity extends AppCompatActivity {
         OrderTrackActivity.this.setTitle("");
         toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        Intent intent = getIntent();
+        orderId = intent.getExtras().getString("orderid");
         findId();
-        backImageButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                onBackPressed();
-            }
-        });
+        backImageButton.setOnClickListener(view -> onBackPressed());
     }
 
     public void findId(){

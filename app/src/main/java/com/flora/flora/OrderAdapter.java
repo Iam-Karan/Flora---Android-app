@@ -1,11 +1,13 @@
 package com.flora.flora;
 
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
@@ -33,6 +35,12 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.OrderViewHol
     public void onBindViewHolder(@NonNull OrderViewHolder holder, int position) {
         holder.nameTextView.setText(orderName.get(position));
         holder.addressTextView.setText(orderAddress.get(position));
+
+        holder.orderCard.setOnClickListener(view -> {
+            Intent intent = new Intent(view.getContext(), OrderTrackActivity.class);
+            intent.putExtra("orderid", orderid.get(position));
+            view.getContext().startActivity(intent);
+        });
     }
 
     @Override
@@ -42,10 +50,12 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.OrderViewHol
 
     public static class OrderViewHolder extends RecyclerView.ViewHolder {
         TextView nameTextView, addressTextView;
+        CardView orderCard;
         public OrderViewHolder(@NonNull View itemView) {
             super(itemView);
             nameTextView = itemView.findViewById(R.id.order_name);
             addressTextView = itemView.findViewById(R.id.order_address);
+            orderCard = itemView.findViewById(R.id.order_card);
         }
     }
 }
