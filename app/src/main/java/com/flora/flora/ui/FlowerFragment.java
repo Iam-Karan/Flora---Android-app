@@ -69,14 +69,12 @@ public class FlowerFragment extends Fragment {
         flowerSearchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
-                copyItemData.addAll(productItemData);
                 adapter.filter(query, copyItemData);
                 return true;
             }
 
             @Override
             public boolean onQueryTextChange(String newText) {
-                copyItemData.addAll(productItemData);
                 adapter.filter(newText, copyItemData);
                 return true;
             }
@@ -111,6 +109,7 @@ public class FlowerFragment extends Fragment {
                                 productItemData.add(data);
                             }
                         }
+                        copyItemData.addAll(productItemData);
                         adapter.notifyDataSetChanged();
                     } else {
                         Toast.makeText(getContext(), "No data found in Database", Toast.LENGTH_SHORT).show();

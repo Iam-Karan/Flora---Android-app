@@ -69,14 +69,12 @@ public class GiftFragment extends Fragment {
         giftSearchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String s) {
-                copyItemData.addAll(productItemData);
                 adapter.filter(s, copyItemData);
                 return true;
             }
 
             @Override
             public boolean onQueryTextChange(String s) {
-                copyItemData.addAll(productItemData);
                 adapter.filter(s, copyItemData);
                 return true;
             }
@@ -111,6 +109,7 @@ public class GiftFragment extends Fragment {
                             }
 
                         }
+                        copyItemData.addAll(productItemData);
                         adapter.notifyDataSetChanged();
                     } else {
                         Toast.makeText(getContext(), "No data found in Database", Toast.LENGTH_SHORT).show();
