@@ -27,7 +27,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="9"
-                    android:id="@+id/searchView"
+                    android:id="@+id/gift_searchView"
                     app:defaultQueryHint="search"
                     android:layout_alignParentRight="true"
                     android:background="@drawable/rouned_bg"

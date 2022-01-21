@@ -1,10 +1,9 @@
 package com.flora.flora.ui;
 
 import android.annotation.SuppressLint;
-import android.content.Intent;
 import android.os.Bundle;
 
-import androidx.appcompat.widget.AppCompatButton;
+import androidx.appcompat.widget.SearchView;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.GridLayoutManager;
@@ -15,7 +14,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
-import com.flora.flora.CustomizeBoquetActivity;
 import com.flora.flora.HomePageCardRecyclerAdapter;
 import com.flora.flora.ProductData;
 import com.flora.flora.R;
@@ -34,10 +32,10 @@ public class FlowerFragment extends Fragment {
     private String mParam2;
 
     private final ArrayList<ProductData> productItemData = new ArrayList<>();
+    private final ArrayList<ProductData> copyItemData = new ArrayList<>();
     private RecyclerView flowerPageRecyclerView;
     HomePageCardRecyclerAdapter adapter;
-    private AppCompatButton costomizeBoquetButton;
-
+    SearchView flowerSearchView;
     FirebaseFirestore firestore;
     public FlowerFragment() {
         // Required empty public constructor
@@ -67,14 +65,24 @@ public class FlowerFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_flower, container, false);
         firestore = FirebaseFirestore.getInstance();
         flowerPageRecyclerView = view.findViewById(R.id.flower_recyclerView);
-        costomizeBoquetButton = view.findViewById(R.id.customize_boquet_btn);
+        flowerSearchView = view.findViewById(R.id.flower_searchView);
+        flowerSearchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                copyItemData.addAll(productItemData);
+                adapter.filter(query, copyItemData);
+                return true;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                copyItemData.addAll(productItemData);
+                adapter.filter(newText, copyItemData);
+                return true;
+            }
+        });
         setProductsInfo();
         setAdapter();
-
-        costomizeBoquetButton.setOnClickListener(view1 -> {
-            Intent intent = new Intent(getContext(), CustomizeBoquetActivity.class);
-            startActivity(intent);
-        });
 
         return view;
     }

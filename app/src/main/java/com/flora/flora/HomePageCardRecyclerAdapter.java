@@ -76,6 +76,21 @@ public class HomePageCardRecyclerAdapter extends RecyclerView.Adapter<HomePageCa
         });
     }
 
+    public void filter(String text, ArrayList<ProductData> itemsCopy) {
+        productItemData.clear();
+        if(text.isEmpty()){
+            productItemData.addAll(itemsCopy);
+        } else{
+            text = text.toLowerCase();
+            for(ProductData item: itemsCopy){
+                if(item.name.toLowerCase().contains(text)){
+                    productItemData.add(item);
+                }
+            }
+        }
+        notifyDataSetChanged();
+    }
+
     @Override
     public int getItemCount() {
         return productItemData.size();

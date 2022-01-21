@@ -3,6 +3,7 @@ package com.flora.flora.ui;
 import android.annotation.SuppressLint;
 import android.os.Bundle;
 
+import androidx.appcompat.widget.SearchView;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.GridLayoutManager;
@@ -29,8 +30,9 @@ public class GiftFragment extends Fragment {
     private String mParam2;
 
     private final ArrayList<ProductData> productItemData = new ArrayList<>();
+    private final ArrayList<ProductData> copyItemData = new ArrayList<>();
     private RecyclerView giftPageRecyclerView;
-
+    SearchView giftSearchView;
     FirebaseFirestore firestore;
     HomePageCardRecyclerAdapter adapter;
     public GiftFragment() {
@@ -61,9 +63,24 @@ public class GiftFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_gift, container, false);
         firestore = FirebaseFirestore.getInstance();
         giftPageRecyclerView = view.findViewById(R.id.gift_recyclerView);
-
+        giftSearchView = view.findViewById(R.id.gift_searchView);
         setAdapter();
         setProductsInfo();
+        giftSearchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String s) {
+                copyItemData.addAll(productItemData);
+                adapter.filter(s, copyItemData);
+                return true;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String s) {
+                copyItemData.addAll(productItemData);
+                adapter.filter(s, copyItemData);
+                return true;
+            }
+        });
         return view;
     }
 
