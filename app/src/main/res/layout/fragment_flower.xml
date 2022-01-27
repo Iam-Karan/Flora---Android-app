@@ -28,14 +28,6 @@
                 android:background="@drawable/rouned_bg"
                 app:searchIcon="@drawable/ic_baseline_search_24"/>
 
-            <ImageButton
-                android:layout_marginLeft="10dp"
-                android:layout_gravity="center_vertical"
-                android:id="@+id/filter"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:src="@drawable/ic_baseline_filter_list_24"
-                android:background="@drawable/rouned_bg"/>
         </LinearLayout>
 
         <GridLayout

@@ -29,8 +29,8 @@ public class GiftFragment extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    private final ArrayList<ProductData> productItemData = new ArrayList<>();
-    private final ArrayList<ProductData> copyItemData = new ArrayList<>();
+    private ArrayList<ProductData> productItemData = new ArrayList<>();
+    private ArrayList<ProductData> copyItemData = new ArrayList<>();
     private RecyclerView giftPageRecyclerView;
     SearchView giftSearchView;
     FirebaseFirestore firestore;
@@ -64,8 +64,9 @@ public class GiftFragment extends Fragment {
         firestore = FirebaseFirestore.getInstance();
         giftPageRecyclerView = view.findViewById(R.id.gift_recyclerView);
         giftSearchView = view.findViewById(R.id.gift_searchView);
-        setAdapter();
+        productItemData = new ArrayList<ProductData>();
         setProductsInfo();
+        setAdapter();
         giftSearchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String s) {

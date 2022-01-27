@@ -33,7 +33,7 @@ public class FavoriteFragment extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    private final ArrayList<ProductData> productItemData = new ArrayList<>();
+    private ArrayList<ProductData> productItemData = new ArrayList<>();
     private RecyclerView favoritePageRecyclerView;
     private HomePageCardRecyclerAdapter adapter;
     private LinearLayout favouriteList, noItemFound;
@@ -78,6 +78,7 @@ public class FavoriteFragment extends Fragment {
             favouriteList.setVisibility(View.VISIBLE);
             noItemFound.setVisibility(View.GONE);
             uId = mFirebaseUser.getUid();
+            productItemData = new ArrayList<ProductData>();
             setProductsInfo();
             setAdapter();
         }else {
@@ -107,12 +108,14 @@ public class FavoriteFragment extends Fragment {
                                     productId.add(document.getId());
                                     favouriteList.setVisibility(View.VISIBLE);
                                     noItemFound.setVisibility(View.GONE);
-                                }
-                                else {
+                                } else {
                                     noItemFound.setVisibility(View.VISIBLE);
                                     favouriteList.setVisibility(View.GONE);
                                 }
                             }
+                        } else {
+                            noItemFound.setVisibility(View.VISIBLE);
+                            favouriteList.setVisibility(View.GONE);
                         }
                     } else {
                         Toast.makeText(getContext(), "Task Fails to get Favourite products", Toast.LENGTH_SHORT).show();

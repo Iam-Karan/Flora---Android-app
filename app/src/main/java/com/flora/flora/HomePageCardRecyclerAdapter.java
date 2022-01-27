@@ -83,7 +83,7 @@ public class HomePageCardRecyclerAdapter extends RecyclerView.Adapter<HomePageCa
         } else{
             text = text.toLowerCase();
             for(ProductData item: itemsCopy){
-                if(item.name.toLowerCase().contains(text)){
+                if(item.name.toLowerCase().contains(text) || item.type.toLowerCase().contains(text)){
                     productItemData.add(item);
                 }
             }

@@ -151,6 +151,7 @@
                         android:textColorHint="@color/white"/>
 
                     <ImageButton
+                        android:visibility="invisible"
                         android:id="@+id/user_email_edit"
                         android:layout_width="0dp"
                         android:layout_weight="2"

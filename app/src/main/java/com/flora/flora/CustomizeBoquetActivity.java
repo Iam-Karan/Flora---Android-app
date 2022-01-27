@@ -53,12 +53,17 @@ public class CustomizeBoquetActivity extends AppCompatActivity {
         if(mFirebaseUser != null){
             uId = mFirebaseUser.getUid();
             createBoquet.setOnClickListener(view -> {
+                boolean showToast = true;
                 for(int i = 0; i < productItemData.size(); i++){
                     String productId = productItemData.get(i).getProductData().getId();
                     int count = Integer.parseInt(productItemData.get(i).getQuantity());
                     if(count > 0) {
                         addToCart(productId, count);
+                        showToast = false;
                     }
+                }
+                if (showToast){
+                    Toast.makeText(getApplicationContext(), "Select Some flowers First", Toast.LENGTH_SHORT).show();
                 }
             });
         }

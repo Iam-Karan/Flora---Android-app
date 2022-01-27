@@ -111,9 +111,13 @@ public class OrdersActivity extends AppCompatActivity {
                                     noOrderData.setVisibility(View.VISIBLE);
                                 }
                             }
+                        }else {
+                            orderData.setVisibility(View.GONE);
+                            noOrderData.setVisibility(View.VISIBLE);
                         }
                     } else {
-                        Toast.makeText(getBaseContext(), "Task Fails to get Cart products", Toast.LENGTH_SHORT).show();
+                        orderData.setVisibility(View.GONE);
+                        noOrderData.setVisibility(View.VISIBLE);
                     }
                 });
     }

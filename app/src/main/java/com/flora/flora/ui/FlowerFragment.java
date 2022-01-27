@@ -28,11 +28,10 @@ public class FlowerFragment extends Fragment {
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
-    private String mParam1;
     private String mParam2;
 
-    private final ArrayList<ProductData> productItemData = new ArrayList<>();
-    private final ArrayList<ProductData> copyItemData = new ArrayList<>();
+    private ArrayList<ProductData> productItemData = new ArrayList<>();
+    private ArrayList<ProductData> copyItemData = new ArrayList<>();
     private RecyclerView flowerPageRecyclerView;
     HomePageCardRecyclerAdapter adapter;
     SearchView flowerSearchView;
@@ -54,7 +53,7 @@ public class FlowerFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
+            String mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
     }
@@ -79,6 +78,7 @@ public class FlowerFragment extends Fragment {
                 return true;
             }
         });
+        productItemData = new ArrayList<ProductData>();
         setProductsInfo();
         setAdapter();
 
