@@ -3,6 +3,7 @@ package com.flora.flora.ui;
 import android.annotation.SuppressLint;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.GridLayoutManager;
@@ -16,10 +17,13 @@ import android.widget.Toast;
 import com.flora.flora.HomePageCardRecyclerAdapter;
 import com.flora.flora.ProductData;
 import com.flora.flora.R;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -74,18 +78,17 @@ public class FavoriteFragment extends Fragment {
         favoritePageRecyclerView = view.findViewById(R.id.favorite_recyclerView);
         favouriteList = view.findViewById(R.id.favorite_items);
         noItemFound = view.findViewById(R.id.no_item_found);
+
         if(mFirebaseUser != null){
             favouriteList.setVisibility(View.VISIBLE);
             noItemFound.setVisibility(View.GONE);
             uId = mFirebaseUser.getUid();
             productItemData = new ArrayList<ProductData>();
             setProductsInfo();
-            setAdapter();
         }else {
             favouriteList.setVisibility(View.GONE);
             noItemFound.setVisibility(View.VISIBLE);
         }
-
 
         return view;
     }
@@ -139,11 +142,11 @@ public class FavoriteFragment extends Fragment {
                                 productItemData.add(data);
                             }
                         }
-                        adapter.notifyDataSetChanged();
                     } else {
                         favouriteList.setVisibility(View.GONE);
                         noItemFound.setVisibility(View.VISIBLE);
                     }
-                }).addOnFailureListener(e -> Toast.makeText(getContext(), "Fail to get the data.", Toast.LENGTH_SHORT).show());
+                }).addOnFailureListener(e -> Toast.makeText(getContext(), "Fail to get the data.", Toast.LENGTH_SHORT).show())
+            .addOnCompleteListener(task -> setAdapter());
     }
 }

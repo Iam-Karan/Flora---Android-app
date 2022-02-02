@@ -3,6 +3,7 @@ package com.flora.flora.ui;
 import android.annotation.SuppressLint;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.widget.SearchView;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.DefaultItemAnimator;
@@ -17,8 +18,11 @@ import android.widget.Toast;
 import com.flora.flora.HomePageCardRecyclerAdapter;
 import com.flora.flora.ProductData;
 import com.flora.flora.R;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -80,7 +84,6 @@ public class FlowerFragment extends Fragment {
         });
         productItemData = new ArrayList<ProductData>();
         setProductsInfo();
-        setAdapter();
 
         return view;
     }
@@ -110,10 +113,10 @@ public class FlowerFragment extends Fragment {
                             }
                         }
                         copyItemData.addAll(productItemData);
-                        adapter.notifyDataSetChanged();
                     } else {
                         Toast.makeText(getContext(), "No data found in Database", Toast.LENGTH_SHORT).show();
                     }
-                }).addOnFailureListener(e -> Toast.makeText(getContext(), "Fail to get the data.", Toast.LENGTH_SHORT).show());
+                }).addOnFailureListener(e -> Toast.makeText(getContext(), "Fail to get the data.", Toast.LENGTH_SHORT).show())
+                .addOnCompleteListener(task -> setAdapter());
     }
 }
